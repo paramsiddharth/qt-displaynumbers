@@ -6,6 +6,8 @@
 #include <QSlider>
 #include <QMainWindow>
 
+namespace ui { class MyWin; }
+
 class MyWin: public QMainWindow {
 	Q_OBJECT // Requirement for customized slots to work
 	public:
