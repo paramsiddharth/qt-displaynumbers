@@ -1,15 +1,15 @@
-#ifndef MYWIDGET_H
-#define MYWIDGET_H
+#ifndef MYWIN_H
+#define MYWIN_H
 
 #include <QLCDNumber>
 #include <QPushButton>
 #include <QSlider>
-#include <QWidget>
+#include <QMainWindow>
 
-class MyWidget: public QWidget {
+class MyWin: public QMainWindow {
 	Q_OBJECT // Requirement for customized slots to work
 	public:
-		MyWidget(QWidget* parent = nullptr);
+		MyWin(QMainWindow* parent = nullptr);
 		
 	private slots:
 		void handleBin();

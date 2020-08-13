@@ -4,12 +4,13 @@
 #include <QPushButton>
 #include <QSlider>
 #include <QVBoxLayout>
+#include <QMainWindow>
 #include <QWidget>
 #include <string>
 
-#include "mywidget.h"
+#include "mywin.h"
 
-MyWidget::MyWidget(QWidget* parent): QWidget(parent) {
+MyWin::MyWin(QMainWindow* parent): QMainWindow(parent) {
 	quit = new QPushButton(tr("Quit"));
 	quit->setFont(QFont("Times", 18, QFont::Bold));
 
@@ -44,28 +45,31 @@ MyWidget::MyWidget(QWidget* parent): QWidget(parent) {
 	buttons->addWidget(btnDec);
 	buttons->addWidget(btnHex);
 	layout->addLayout(buttons);
-	setLayout(layout);
+
+	QWidget* widget = new QWidget;
+	widget->setLayout(layout);
+	setCentralWidget(widget);
 }
 
-void MyWidget::handleBin() {
+void MyWin::handleBin() {
 	lcd->setMode(QLCDNumber::Bin);
 	lcd->setDigitCount(4);
 	lcd->display(slider->value());
 }
 
-void MyWidget::handleOct() {
+void MyWin::handleOct() {
 	lcd->setMode(QLCDNumber::Oct);
 	lcd->setDigitCount(2);
 	lcd->display(slider->value());
 }
 
-void MyWidget::handleDec() {
+void MyWin::handleDec() {
 	lcd->setMode(QLCDNumber::Dec);
 	lcd->setDigitCount(2);
 	lcd->display(slider->value());
 }
 
-void MyWidget::handleHex() {
+void MyWin::handleHex() {
 	lcd->setMode(QLCDNumber::Hex);
 	lcd->setDigitCount(1);
 	lcd->display(slider->value());
@@ -73,7 +77,7 @@ void MyWidget::handleHex() {
 
 int main(int argc, char* argv[]) {
 	QApplication app(argc, argv);
-	MyWidget widget;
-	widget.show();
+	MyWin primary;
+	primary.show();
 	return app.exec();
 }
