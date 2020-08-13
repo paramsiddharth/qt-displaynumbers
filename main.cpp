@@ -11,6 +11,8 @@
 #include "mywin.h"
 
 MyWin::MyWin(QMainWindow* parent): QMainWindow(parent) {
+	setWindowTitle("Display Numbers");
+
 	quit = new QPushButton(tr("Quit"));
 	quit->setFont(QFont("Times", 18, QFont::Bold));
 
