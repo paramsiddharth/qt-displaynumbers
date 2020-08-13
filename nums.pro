@@ -17,4 +17,4 @@ INCLUDEPATH += .
 HEADERS = mywin.h
 SOURCES += main.cpp
 QT += widgets
-QMAKE_POST_LINK = windeployqt release/${TARGET}
+QMAKE_POST_LINK = windeployqt release/${TARGET} --no-translations --no-opengl-sw
