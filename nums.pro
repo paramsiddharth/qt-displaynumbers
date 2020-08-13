@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = Start
+TARGET = nums
 INCLUDEPATH += .
 
 # You can make your code fail to compile if you use deprecated APIs.
@@ -17,4 +17,4 @@ INCLUDEPATH += .
 HEADERS = mywin.h
 SOURCES += main.cpp
 QT += widgets
-QMAKE_POST_LINK = windeployqt release/Start.exe
+QMAKE_POST_LINK = windeployqt release/${TARGET}
