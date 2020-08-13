@@ -2,7 +2,7 @@
 #include <QFont>
 #include <QLCDNumber>
 #include <QPushButton>
-#include <QSlider>
+#include <QSpinBox>
 #include <QVBoxLayout>
 #include <QMainWindow>
 #include <QWidget>
@@ -16,12 +16,11 @@ MyWin::MyWin(QMainWindow* parent): QMainWindow(parent) {
 
 	lcd = new QLCDNumber(2);
 	lcd->setSegmentStyle(QLCDNumber::Filled);
-	// lcd->setMode(QLCDNumber::Bin);
-	// lcd-setDigitCount(4);
+	lcd->display(1);
 
-	slider = new QSlider(Qt::Horizontal);
-	slider->setRange(1, 10);
-	slider->setValue(1);
+	spinbox = new QSpinBox;
+	spinbox->setRange(1, 15);
+	spinbox->setValue(1);
 
 	QPushButton* btnBin = new QPushButton(tr("Binary")),
 		* btnOct = new QPushButton(tr("Octal")),
@@ -29,7 +28,7 @@ MyWin::MyWin(QMainWindow* parent): QMainWindow(parent) {
 		* btnHex = new QPushButton(tr("Hexadecimal"));
 
 	connect(quit, SIGNAL(clicked()), qApp, SLOT(quit()));
-	connect(slider, SIGNAL(valueChanged(int)), lcd, SLOT(display(int)));
+	connect(spinbox, SIGNAL(valueChanged(int)), lcd, SLOT(display(int)));
 	connect(btnBin, SIGNAL(clicked()), this, SLOT(handleBin()));
 	connect(btnOct, SIGNAL(clicked()), this, SLOT(handleOct()));
 	connect(btnDec, SIGNAL(clicked()), this, SLOT(handleDec()));
@@ -38,7 +37,7 @@ MyWin::MyWin(QMainWindow* parent): QMainWindow(parent) {
 	QVBoxLayout* layout = new QVBoxLayout;
 	layout->addWidget(quit);
 	layout->addWidget(lcd);
-	layout->addWidget(slider);
+	layout->addWidget(spinbox);
 	QHBoxLayout* buttons = new QHBoxLayout;
 	buttons->addWidget(btnBin);
 	buttons->addWidget(btnOct);
@@ -54,25 +53,25 @@ MyWin::MyWin(QMainWindow* parent): QMainWindow(parent) {
 void MyWin::handleBin() {
 	lcd->setMode(QLCDNumber::Bin);
 	lcd->setDigitCount(4);
-	lcd->display(slider->value());
+	lcd->display(spinbox->value());
 }
 
 void MyWin::handleOct() {
 	lcd->setMode(QLCDNumber::Oct);
 	lcd->setDigitCount(2);
-	lcd->display(slider->value());
+	lcd->display(spinbox->value());
 }
 
 void MyWin::handleDec() {
 	lcd->setMode(QLCDNumber::Dec);
 	lcd->setDigitCount(2);
-	lcd->display(slider->value());
+	lcd->display(spinbox->value());
 }
 
 void MyWin::handleHex() {
 	lcd->setMode(QLCDNumber::Hex);
 	lcd->setDigitCount(1);
-	lcd->display(slider->value());
+	lcd->display(spinbox->value());
 }
 
 int main(int argc, char* argv[]) {

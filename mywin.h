@@ -3,7 +3,7 @@
 
 #include <QLCDNumber>
 #include <QPushButton>
-#include <QSlider>
+#include <QSpinBox>
 #include <QMainWindow>
 
 namespace ui { class MyWin; }
@@ -21,7 +21,7 @@ class MyWin: public QMainWindow {
 		
 	private:
 		QLCDNumber* lcd = nullptr;
-		QSlider* slider = nullptr;
+		QSpinBox* spinbox = nullptr;
 		QPushButton* quit;
 };
 
