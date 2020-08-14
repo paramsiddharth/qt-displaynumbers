@@ -10,7 +10,7 @@ Made in Qt (C++).
 
  - Use `qmake` to create the required files for compilation.
    ```
-   > qmake
+   > qmake nums.pro
    ```
  - After verifying the generated `Makefile`, build the application.
    ```
